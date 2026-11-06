@@ -261,6 +261,20 @@
     .quote-option { background: var(--white); padding: 50px 48px; }
     .quote-option h3 { font-size: 2rem; margin: 10px 0 12px; }
     .quote-option p { color: var(--stone); margin-bottom: 28px; }
+    .checks { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 26px; margin-top: 12px; }
+    .field .check { display: flex; align-items: center; gap: 12px; cursor: pointer; font-size: 0.95rem; color: var(--ink); text-transform: none; letter-spacing: 0; margin: 0; }
+    .field .check input { -webkit-appearance: none; appearance: none; width: 18px; height: 18px; border: 1px solid #CFC4B2; flex-shrink: 0; cursor: pointer; transition: all 0.2s; position: relative; padding: 0; }
+    .field .check input:checked { background: var(--gold); border-color: var(--gold); }
+    .field .check input:checked::after { content: ''; position: absolute; left: 5px; top: 1px; width: 5px; height: 10px; border: solid var(--white); border-width: 0 1.5px 1.5px 0; transform: rotate(45deg); }
+    .field .check input:focus-visible { outline: 1px solid var(--gold); outline-offset: 2px; }
+    .field select:invalid { color: var(--stone); }
+    .form-error { color: #9A3B2E; font-size: 0.9rem; margin-top: 16px; text-align: center; }
+    .form-thanks { background: var(--white); padding: 70px 56px; border: 1px solid var(--linen); text-align: center; }
+    .form-thanks h3 { font-size: 2.6rem; margin-top: 14px; }
+    .form-thanks h3 em { font-style: italic; color: var(--gold); }
+    .form-thanks .rule { margin: 24px auto; }
+    .form-thanks p { color: var(--stone); max-width: 380px; margin: 0 auto; }
+    @media (max-width: 760px) { .checks { grid-template-columns: 1fr; } .form-thanks { padding: 50px 26px; } }
     .partner-note { text-align: center; margin-top: 22px; font-size: 0.92rem; color: var(--stone); }
     .partner-note a { color: var(--gold); border-bottom: 1px solid var(--gold-light); }
     .btn-outline { background: transparent; color: var(--gold); }
@@ -503,64 +517,112 @@
         </div>
       </div>
 
-      <!-- Submissions are emailed via FormSubmit (formsubmit.co).
-           The first submission sends an activation email to this address — click the link in it once. -->
+      <!-- Submissions go to the Refresh Cleaning Quote Request Google Form (and its linked Sheet).
+           Option values must match the Google Form choices exactly. -->
       <div class="reveal">
-      <form action="https://formsubmit.co/jtzcathy@gmail.com" method="POST">
-        <input type="hidden" name="_subject" value="New Quote Request — Refresh Cleaning">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+      <form id="quoteForm" action="https://docs.google.com/forms/d/e/1FAIpQLSdYRkGdvGcT5pd7HPDIbDs9b8WoLPvXJWdbEkjdzXLtaxlPYw/formResponse" method="POST" target="_blank">
         <div class="form-row">
           <div class="field">
             <label for="name">Full Name</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="entry.1619908749" required>
           </div>
           <div class="field">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="entry.1783894608" required>
           </div>
         </div>
         <div class="form-row">
           <div class="field">
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="entry.1330491208" required>
           </div>
           <div class="field">
-            <label for="role">I am a</label>
-            <select id="role" name="role">
-              <option>Homeowner</option>
-              <option>Real Estate Agent / Broker</option>
-              <option>Builder</option>
-              <option>Property Manager</option>
-              <option>Other</option>
+            <label for="propertyType">Property Type</label>
+            <select id="propertyType" name="entry.72963166" required>
+              <option value="" disabled selected>Select</option>
+              <option>Single Family Home</option>
+              <option>Condo or Apartment</option>
+              <option>Townhouse</option>
+              <option>Commercial Space</option>
+              <option>Multi Family Property</option>
             </select>
           </div>
         </div>
         <div class="form-row">
           <div class="field">
-            <label for="service">Service</label>
-            <select id="service" name="service">
-              <option>Pre-Listing Detail</option>
-              <option>Open House Refresh</option>
-              <option>Move-Out Clean</option>
-              <option>Move-In Ready</option>
-              <option>Post-Construction</option>
-              <option>Estate &amp; Rental Turnover</option>
-              <option>Partnership Inquiry</option>
+            <label for="serviceType">Cleaning Service</label>
+            <select id="serviceType" name="entry.1191106293" required>
+              <option value="" disabled selected>Select</option>
+              <option>Move In or Move Out Cleaning</option>
+              <option>Post Construction Cleaning</option>
+              <option>Staging Prep Cleaning</option>
+              <option>Recurring Maintenance Cleaning</option>
             </select>
           </div>
           <div class="field">
-            <label for="date">Preferred Date</label>
-            <input type="date" id="date" name="date">
+            <label for="sqft">Approximate Square Footage</label>
+            <select id="sqft" name="entry.1433740666" required>
+              <option value="" disabled selected>Select</option>
+              <option>Under 1000 sq ft</option>
+              <option>1000 to 1500 sq ft</option>
+              <option>1501 to 2000 sq ft</option>
+              <option>2001 to 2500 sq ft</option>
+              <option>2501 to 3500 sq ft</option>
+              <option>3500+ sq ft</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="beds">Bedrooms</label>
+            <select id="beds" name="entry.379934396" required>
+              <option value="" disabled selected>Select</option>
+              <option>1 Bedroom</option>
+              <option>2 Bedrooms</option>
+              <option>3 Bedrooms</option>
+              <option>4 Bedrooms</option>
+              <option>5+ Bedrooms</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="baths">Bathrooms</label>
+            <select id="baths" name="entry.570151397" required>
+              <option value="" disabled selected>Select</option>
+              <option>1 Bathroom</option>
+              <option>1.5 Bathrooms</option>
+              <option>2 Bathrooms</option>
+              <option>2.5 Bathrooms</option>
+              <option>3+ Bathrooms</option>
+            </select>
           </div>
         </div>
         <div class="field">
-          <label for="message">Property Details</label>
-          <textarea id="message" name="message" placeholder="Address, square footage, and anything we should know"></textarea>
+          <label>Additional Services</label>
+          <div class="checks">
+            <label class="check"><input type="checkbox" name="entry.1146862714" value="Inside Oven Cleaning"><span>Inside Oven Cleaning</span></label>
+            <label class="check"><input type="checkbox" name="entry.1146862714" value="Inside Refrigerator Cleaning"><span>Inside Refrigerator Cleaning</span></label>
+            <label class="check"><input type="checkbox" name="entry.1146862714" value="Interior Window Washing"><span>Interior Window Washing</span></label>
+            <label class="check"><input type="checkbox" name="entry.1146862714" value="Cabinet Interior Cleaning"><span>Cabinet Interior Cleaning</span></label>
+            <label class="check"><input type="checkbox" name="entry.1146862714" value="Garage Sweep Out"><span>Garage Sweep Out</span></label>
+          </div>
         </div>
-        <button type="submit" class="btn btn-gold">Send Request</button>
+        <div class="field">
+          <label for="date">Target Date for Cleaning</label>
+          <input type="date" id="date" required>
+        </div>
+        <div class="field">
+          <label for="message">Additional Details or Specific Requirements</label>
+          <textarea id="message" name="entry.1023636772" placeholder="Address, timing, access, and anything we should know"></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold" id="submitBtn">Send Request</button>
+        <p class="form-error" id="formError" hidden>Something went wrong. Please try again, or call us at (919) 618-4391.</p>
       </form>
+      <div class="form-thanks" id="formThanks" hidden>
+        <span class="eyebrow">Request Received</span>
+        <h3>Thank <em>you.</em></h3>
+        <div class="rule"></div>
+        <p>We’ve received your request and will be in touch within one business day with your personalized quote.</p>
+      </div>
       <p class="partner-note">Agent, builder, or property manager? <a href="quote.html?type=partner">Become a partner →</a></p>
       </div>
     </div>
@@ -610,6 +672,35 @@
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Quote form -> Google Form (stays on page)
+    const qf = document.getElementById('quoteForm');
+    qf.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      const err = document.getElementById('formError');
+      err.hidden = true;
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      const data = new URLSearchParams(new FormData(qf));
+      const d = document.getElementById('date').value; // YYYY-MM-DD
+      if (d) {
+        const [y, m, day] = d.split('-');
+        data.append('entry.145817746_year', y);
+        data.append('entry.145817746_month', String(+m));
+        data.append('entry.145817746_day', String(+day));
+      }
+      try {
+        await fetch(qf.action, { method: 'POST', mode: 'no-cors', body: data });
+        qf.hidden = true;
+        document.getElementById('formThanks').hidden = false;
+        document.getElementById('formThanks').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } catch (ex) {
+        err.hidden = false;
+        btn.disabled = false;
+        btn.textContent = 'Send Request';
+      }
+    });
 
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
