@@ -1,1 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Refresh Cleaning | Luxury Real Estate Cleaning</title>
+  <meta name="description" content="Refresh Cleaning delivers meticulous, white-glove cleaning for luxury listings, move-ins, move-outs, and open houses. Trusted by agents, brokers, and discerning homeowners.">
 
+  <!-- Social sharing preview -->
+  <meta property="og:title" content="Refresh Cleaning | Luxury Real Estate Cleaning">
+  <meta property="og:description" content="White-glove cleaning for luxury listings, move-ins, and open houses.">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ivory: #F7F3EC;
+      --linen: #EFE8DC;
+      --charcoal: #1C1C1A;
+      --ink: #2B2A27;
+      --stone: #7A746A;
+      --gold: #B39662;
+      --gold-light: #D4BE8E;
+      --white: #FFFFFF;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+      --max: 1200px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      font-weight: 300;
+      color: var(--ink);
+      background: var(--ivory);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.1; color: var(--charcoal); }
+    h2 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); }
+    h2 em, h1 em { font-style: italic; color: var(--gold); }
+
+    .rule { width: 56px; height: 1px; background: var(--gold); margin: 24px 0; }
+    .center { text-align: center; }
+    .center .rule { margin-left: auto; margin-right: auto; }
+
+    .btn {
+      display: inline-block;
+      padding: 16px 38px;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      border: 1px solid var(--gold);
+      transition: all 0.35s ease;
+      cursor: pointer;
+    }
+    .btn-gold { background: var(--gold); color: var(--white); }
+    .btn-gold:hover { background: transparent; color: var(--gold); }
+    .btn-ghost { background: transparent; color: var(--white); border-color: rgba(255,255,255,0.6); }
+    .btn-ghost:hover { background: var(--white); color: var(--charcoal); border-color: var(--white); }
+
+    /* ---------- Navigation ---------- */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 26px 0;
+      transition: all 0.4s ease;
+    }
+    .nav.scrolled {
+      background: rgba(247, 243, 236, 0.96);
+      backdrop-filter: blur(8px);
+      padding: 16px 0;
+      box-shadow: 0 1px 0 rgba(179, 150, 98, 0.25);
+    }
+    .nav .container { display: flex; align-items: center; justify-content: space-between; }
+    .logo {
+      font-family: var(--serif);
+      font-size: 1.7rem;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      transition: color 0.4s;
+    }
+    .logo span { font-style: italic; color: var(--gold-light); }
+    .nav.scrolled .logo { color: var(--charcoal); }
+    .nav.scrolled .logo span { color: var(--gold); }
+
+    .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; }
+    .nav-links a {
+      font-size: 0.74rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.88); transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav.scrolled .nav-links a { color: var(--ink); }
+    .nav.scrolled .nav-links a:hover { color: var(--gold); }
+    .nav-links .btn { padding: 11px 24px; color: var(--white); }
+    .nav.scrolled .nav-links .btn { color: var(--white); }
+    .nav.scrolled .nav-links .btn:hover { color: var(--gold); }
+
+    .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 6px; }
+    .menu-toggle span { display: block; width: 26px; height: 1px; background: var(--white); margin: 7px 0; transition: 0.3s; }
+    .nav.scrolled .menu-toggle span { background: var(--charcoal); }
+
+    /* ---------- Hero ---------- */
+    /* Add your own photo at images/hero.jpg — the dark gradient shows until then */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      background:
+        linear-gradient(180deg, rgba(20,19,17,0.55) 0%, rgba(20,19,17,0.35) 45%, rgba(20,19,17,0.7) 100%),
+        url('images/hero.jpg') center/cover no-repeat,
+        linear-gradient(135deg, #2B2A27 0%, #4A443A 55%, #6E6352 100%);
+      color: var(--white);
+      position: relative;
+    }
+    .hero-content { max-width: 720px; padding-top: 80px; }
+    .hero .eyebrow { color: var(--gold-light); }
+    .hero h1 {
+      font-size: clamp(3rem, 7.5vw, 5.8rem);
+      color: var(--white);
+      margin: 22px 0 28px;
+    }
+    .hero h1 em { color: var(--gold-light); }
+    .hero p { font-size: 1.12rem; max-width: 520px; color: rgba(255,255,255,0.85); margin-bottom: 44px; }
+    .hero-actions { display: flex; gap: 18px; flex-wrap: wrap; }
+
+    .scroll-cue {
+      position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+      font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.6);
+      display: flex; flex-direction: column; align-items: center; gap: 12px;
+    }
+    .scroll-cue::after {
+      content: ''; width: 1px; height: 44px; background: linear-gradient(var(--gold-light), transparent);
+      animation: drip 2.2s ease-in-out infinite;
+    }
+    @keyframes drip { 0%,100% { opacity: 0.3; transform: scaleY(0.6); transform-origin: top; } 50% { opacity: 1; transform: scaleY(1); } }
+
+    /* ---------- Credentials strip ---------- */
+    .credentials { background: var(--charcoal); color: var(--linen); padding: 34px 0; }
+    .credentials .container { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 24px; }
+    .cred { display: flex; align-items: center; gap: 14px; font-size: 0.74rem; letter-spacing: 0.22em; text-transform: uppercase; }
+    .cred::before { content: '◆'; color: var(--gold); font-size: 0.55rem; }
+
+    /* ---------- Intro ---------- */
+    section { padding: 130px 0; }
+    .intro .container { display: grid; grid-template-columns: 1fr 1fr; gap: 90px; align-items: center; }
+    .intro-image {
+      aspect-ratio: 4 / 5;
+      background:
+        url('images/interior.jpg') center/cover no-repeat,
+        linear-gradient(160deg, #E4DACA 0%, #CBBC9F 100%);
+      position: relative;
+    }
+    .intro-image::after {
+      content: ''; position: absolute; inset: 22px -22px -22px 22px;
+      border: 1px solid var(--gold); z-index: -1;
+    }
+    .intro-text p { color: var(--stone); margin-bottom: 20px; font-size: 1.05rem; }
+    .signature { font-family: var(--serif); font-style: italic; font-size: 1.5rem; color: var(--charcoal); margin-top: 32px; }
+
+    /* ---------- Services ---------- */
+    .services { background: var(--white); }
+    .services-header { margin-bottom: 76px; }
+    .services-header p { color: var(--stone); max-width: 560px; margin: 0 auto; }
+    .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--linen); border: 1px solid var(--linen); }
+    .service {
+      background: var(--white); padding: 56px 42px;
+      transition: background 0.4s ease;
+      position: relative;
+    }
+    .service:hover { background: var(--ivory); }
+    .service-num { font-family: var(--serif); font-size: 1rem; font-style: italic; color: var(--gold); margin-bottom: 26px; display: block; }
+    .service h3 { font-size: 1.8rem; margin-bottom: 16px; }
+    .service p { color: var(--stone); font-size: 0.96rem; }
+    .service::after {
+      content: ''; position: absolute; left: 42px; bottom: 40px; width: 0; height: 1px; background: var(--gold);
+      transition: width 0.45s ease;
+    }
+    .service:hover::after { width: 48px; }
+
+    /* ---------- Process ---------- */
+    .process { background: var(--ivory); }
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-top: 76px; }
+    .step { border-top: 1px solid var(--gold); padding-top: 30px; }
+    .step-num { font-family: var(--serif); font-size: 3.2rem; color: var(--gold-light); line-height: 1; margin-bottom: 18px; }
+    .step h3 { font-size: 1.5rem; margin-bottom: 12px; }
+    .step p { color: var(--stone); font-size: 0.95rem; }
+
+    /* ---------- Partners / Agents ---------- */
+    .partners {
+      background:
+        linear-gradient(rgba(28,28,26,0.86), rgba(28,28,26,0.86)),
+        url('images/listing.jpg') center/cover no-repeat,
+        var(--charcoal);
+      color: var(--linen);
+    }
+    .partners .container { display: grid; grid-template-columns: 1.1fr 1fr; gap: 90px; align-items: center; }
+    .partners h2 { color: var(--white); }
+    .partners h2 em { color: var(--gold-light); }
+    .partners p { color: rgba(239,232,220,0.78); margin-bottom: 18px; }
+    .partner-list { list-style: none; }
+    .partner-list li {
+      padding: 22px 0; border-bottom: 1px solid rgba(212,190,142,0.25);
+      display: flex; gap: 20px; align-items: baseline;
+    }
+    .partner-list li:first-child { border-top: 1px solid rgba(212,190,142,0.25); }
+    .partner-list strong { font-family: var(--serif); font-weight: 400; font-size: 1.35rem; color: var(--white); min-width: 170px; }
+    .partner-list span { font-size: 0.92rem; color: rgba(239,232,220,0.7); }
+
+    /* ---------- Quote ---------- */
+    .statement { background: var(--linen); padding: 110px 0; }
+    .statement blockquote {
+      font-family: var(--serif); font-style: italic; font-size: clamp(1.8rem, 3.6vw, 2.8rem);
+      line-height: 1.35; color: var(--charcoal); max-width: 880px; margin: 0 auto;
+    }
+
+    /* ---------- Contact ---------- */
+    .contact .container { display: grid; grid-template-columns: 1fr 1.2fr; gap: 90px; }
+    .contact-info p { color: var(--stone); margin-bottom: 36px; }
+    .contact-detail { margin-bottom: 26px; }
+    .contact-detail .eyebrow { display: block; margin-bottom: 6px; }
+    .contact-detail a, .contact-detail div { font-family: var(--serif); font-size: 1.4rem; color: var(--charcoal); }
+    .contact-detail a:hover { color: var(--gold); }
+
+    form { background: var(--white); padding: 56px; border: 1px solid var(--linen); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+    .field { margin-bottom: 28px; }
+    .field label { display: block; font-size: 0.68rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stone); margin-bottom: 8px; }
+    .field input, .field select, .field textarea {
+      width: 100%; border: none; border-bottom: 1px solid #D8CFC0; background: transparent;
+      padding: 10px 0; font-family: var(--sans); font-size: 1rem; font-weight: 300; color: var(--ink);
+      transition: border-color 0.3s; border-radius: 0; -webkit-appearance: none; appearance: none;
+    }
+    .field select {
+      background-image: linear-gradient(45deg, transparent 50%, var(--gold) 50%), linear-gradient(135deg, var(--gold) 50%, transparent 50%);
+      background-position: calc(100% - 12px) 55%, calc(100% - 7px) 55%;
+      background-size: 5px 5px; background-repeat: no-repeat;
+    }
+    .field textarea { resize: vertical; min-height: 90px; }
+    .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-bottom-color: var(--gold); }
+    form .btn { width: 100%; margin-top: 10px; }
+
+    /* ---------- Footer ---------- */
+    footer { background: var(--charcoal); color: rgba(239,232,220,0.6); padding: 70px 0 40px; }
+    .footer-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; padding-bottom: 40px; border-bottom: 1px solid rgba(212,190,142,0.2); }
+    footer .logo { color: var(--white); }
+    .footer-links { display: flex; gap: 34px; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; }
+    .footer-links a:hover { color: var(--gold-light); }
+    .footer-bottom { padding-top: 30px; font-size: 0.8rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+    /* ---------- Reveal animation ---------- */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease, transform 0.9s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .scroll-cue::after { animation: none; }
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 980px) {
+      section { padding: 96px 0; }
+      .intro .container, .partners .container, .contact .container { grid-template-columns: 1fr; gap: 60px; }
+      .service-grid { grid-template-columns: 1fr 1fr; }
+      .process-grid { grid-template-columns: 1fr 1fr; gap: 50px 36px; }
+      .intro-image { max-width: 460px; }
+    }
+    @media (max-width: 760px) {
+      .container { padding: 0 22px; }
+      .menu-toggle { display: block; }
+      .nav-links {
+        position: fixed; inset: 0; background: var(--charcoal);
+        flex-direction: column; justify-content: center; gap: 34px;
+        opacity: 0; pointer-events: none; transition: opacity 0.35s;
+      }
+      .nav-links.open { opacity: 1; pointer-events: auto; }
+      .nav-links a, .nav.scrolled .nav-links a { color: var(--linen); font-size: 0.9rem; }
+      .menu-toggle { position: relative; z-index: 101; }
+      .menu-toggle.open span { background: var(--white); }
+      .menu-toggle.open span:nth-child(1) { transform: translateY(4px) rotate(45deg); }
+      .menu-toggle.open span:nth-child(2) { transform: translateY(-4px) rotate(-45deg); }
+      .service-grid, .process-grid, .form-row { grid-template-columns: 1fr; }
+      .service { padding: 46px 30px; }
+      .service::after { left: 30px; }
+      form { padding: 38px 26px; }
+      .partner-list li { flex-direction: column; gap: 4px; }
+      .intro-image::after { inset: 14px -14px -14px 14px; }
+      .credentials .container { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="nav" id="nav">
+    <div class="container">
+      <a href="#" class="logo">Refresh <span>Cleaning</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu"><span></span><span></span></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#agents">For Agents</a></li>
+        <li><a href="#contact" class="btn btn-gold">Request a Quote</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <span class="eyebrow">Luxury Real Estate Cleaning</span>
+        <h1>Every home deserves a <em>flawless</em> first impression.</h1>
+        <p>White-glove cleaning for distinguished listings, seamless move-ins, and showings that sell. Discreet, meticulous, and always on schedule.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-gold">Request a Quote</a>
+          <a href="#services" class="btn btn-ghost">Our Services</a>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-cue">Discover</div>
+  </header>
+
+  <!-- ========== CREDENTIALS ========== -->
+  <div class="credentials">
+    <div class="container">
+      <div class="cred">Fully Insured &amp; Bonded</div>
+      <div class="cred">Background-Checked Team</div>
+      <div class="cred">Listing-Ready Guarantee</div>
+      <div class="cred">Flexible Scheduling</div>
+    </div>
+  </div>
+
+  <!-- ========== INTRO ========== -->
+  <section class="intro" id="about">
+    <div class="container">
+      <div class="intro-image reveal" role="img" aria-label="Pristine luxury interior"></div>
+      <div class="intro-text reveal">
+        <span class="eyebrow">The Refresh Standard</span>
+        <h2>Where detail becomes <em>distinction.</em></h2>
+        <div class="rule"></div>
+        <p>A remarkable property should feel remarkable from the moment the door opens. Refresh Cleaning partners with agents, brokers, builders, and homeowners to prepare residences for their most important moments — the listing photos, the first showing, the final walkthrough.</p>
+        <p>We treat every home with the care of a private estate: natural stone, custom millwork, designer fixtures, and fine finishes handled with the right products and the right hands.</p>
+        <div class="signature">Immaculate, every time.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SERVICES ========== -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="services-header center reveal">
+        <span class="eyebrow">Our Services</span>
+        <h2>Tailored to the <em>moment</em></h2>
+        <div class="rule"></div>
+        <p>From pre-listing preparation to post-closing turnover, each service is calibrated to the property and the timeline.</p>
+      </div>
+      <div class="service-grid">
+        <div class="service reveal">
+          <span class="service-num">I.</span>
+          <h3>Pre-Listing Detail</h3>
+          <p>A top-to-bottom preparation before photography and launch — glass, fixtures, baseboards, and every surface buyers will notice.</p>
+        </div>
+        <div class="service reveal">
+          <span class="service-num">II.</span>
+          <h3>Open House Refresh</h3>
+          <p>Quick-turn touch-ups before showings and open houses so the home presents perfectly, every weekend it’s on the market.</p>
+        </div>
+        <div class="service reveal">
+          <span class="service-num">III.</span>
+          <h3>Move-Out Clean</h3>
+          <p>A thorough, empty-home deep clean that leaves the property ready for final walkthrough and a smooth closing.</p>
+        </div>
+        <div class="service reveal">
+          <span class="service-num">IV.</span>
+          <h3>Move-In Ready</h3>
+          <p>Welcome new owners to a home that feels brand new — cabinets, appliances, and closets sanitized before the first box arrives.</p>
+        </div>
+        <div class="service reveal">
+          <span class="service-num">V.</span>
+          <h3>Post-Construction</h3>
+          <p>Fine dust, adhesive, and debris removed from new builds and renovations, with care for freshly installed finishes.</p>
+        </div>
+        <div class="service reveal">
+          <span class="service-num">VI.</span>
+          <h3>Estate &amp; Rental Turnover</h3>
+          <p>Reliable turnover for luxury rentals, second homes, and estates between occupants, managed on your schedule.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROCESS ========== -->
+  <section class="process" id="process">
+    <div class="container">
+      <div class="center reveal">
+        <span class="eyebrow">How It Works</span>
+        <h2>An effortless <em>experience</em></h2>
+        <div class="rule"></div>
+      </div>
+      <div class="process-grid">
+        <div class="step reveal">
+          <div class="step-num">01</div>
+          <h3>Consult</h3>
+          <p>Share the property, timeline, and any special requirements. We’ll recommend the right scope.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">02</div>
+          <h3>Schedule</h3>
+          <p>We coordinate access with you or your lockbox and work around photography and showings.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">03</div>
+          <h3>Refresh</h3>
+          <p>Our trained team completes a detailed checklist tailored to the home’s finishes and layout.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">04</div>
+          <h3>Review</h3>
+          <p>A final quality walkthrough and photo confirmation, so you know it’s ready without being there.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOR AGENTS ========== -->
+  <section class="partners" id="agents">
+    <div class="container">
+      <div class="reveal">
+        <span class="eyebrow">For Real Estate Professionals</span>
+        <h2>Your listings, <em>elevated.</em></h2>
+        <div class="rule"></div>
+        <p>Agents and brokers rely on Refresh to protect their reputation and their client relationships. We understand tight timelines, vacant-home access, and the standard a luxury listing demands.</p>
+        <p>Ask about priority scheduling and recurring partner rates for your brokerage.</p>
+        <a href="#contact" class="btn btn-gold" style="margin-top: 18px;">Become a Partner</a>
+      </div>
+      <ul class="partner-list reveal">
+        <li><strong>Agents &amp; Brokers</strong><span>Listing prep, open houses, and closing-ready cleans.</span></li>
+        <li><strong>Builders</strong><span>Post-construction detail for model homes and new builds.</span></li>
+        <li><strong>Property Managers</strong><span>Dependable turnover for high-end rentals.</span></li>
+        <li><strong>Homeowners</strong><span>Selling, buying, or simply starting fresh.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ========== STATEMENT ========== -->
+  <div class="statement center">
+    <div class="container reveal">
+      <blockquote>“The finest homes are not simply cleaned. They are prepared to be remembered.”</blockquote>
+      <div class="rule"></div>
+      <span class="eyebrow">The Refresh Philosophy</span>
+    </div>
+  </div>
+
+  <!-- ========== CONTACT ========== -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-info reveal">
+        <span class="eyebrow">Get in Touch</span>
+        <h2>Request a <em>private</em> quote</h2>
+        <div class="rule"></div>
+        <p>Tell us about the property and your timeline. We typically respond within one business day.</p>
+        <!-- TODO: replace with your real phone, email, and service area -->
+        <div class="contact-detail">
+          <span class="eyebrow">Telephone</span>
+          <a href="tel:+10000000000">(000) 000-0000</a>
+        </div>
+        <div class="contact-detail">
+          <span class="eyebrow">Email</span>
+          <a href="mailto:hello@refreshcleaning.com">hello@refreshcleaning.com</a>
+        </div>
+        <div class="contact-detail">
+          <span class="eyebrow">Service Area</span>
+          <div>Your City &amp; Surrounding Areas</div>
+        </div>
+      </div>
+
+      <!-- GitHub Pages can't process forms on its own. Create a free form at formspree.io
+           and replace YOUR_FORM_ID below so submissions arrive in your inbox. -->
+      <form class="reveal" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+          <div class="field">
+            <label for="role">I am a</label>
+            <select id="role" name="role">
+              <option>Real Estate Agent / Broker</option>
+              <option>Homeowner</option>
+              <option>Builder</option>
+              <option>Property Manager</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="service">Service</label>
+            <select id="service" name="service">
+              <option>Pre-Listing Detail</option>
+              <option>Open House Refresh</option>
+              <option>Move-Out Clean</option>
+              <option>Move-In Ready</option>
+              <option>Post-Construction</option>
+              <option>Estate &amp; Rental Turnover</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="date">Preferred Date</label>
+            <input type="date" id="date" name="date">
+          </div>
+        </div>
+        <div class="field">
+          <label for="message">Property Details</label>
+          <textarea id="message" name="message" placeholder="Address, square footage, and anything we should know"></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold">Send Request</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <a href="#" class="logo">Refresh <span>Cleaning</span></a>
+        <ul class="footer-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#agents">For Agents</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span id="year"></span> Refresh Cleaning. All rights reserved.</span>
+        <span>Fully insured &amp; bonded</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav background on scroll
+    const nav = document.getElementById('nav');
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 60);
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+
+    // Mobile menu
+    const toggle = document.getElementById('menuToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      links.classList.toggle('open');
+      toggle.classList.toggle('open');
+    });
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      links.classList.remove('open');
+      toggle.classList.remove('open');
+    }));
+
+    // Fade-in on scroll
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
