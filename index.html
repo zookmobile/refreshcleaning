@@ -257,6 +257,16 @@
     .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-bottom-color: var(--gold); }
     form .btn { width: 100%; margin-top: 10px; }
 
+    .quote-cta { display: grid; gap: 1px; background: var(--linen); border: 1px solid var(--linen); align-self: start; }
+    .quote-option { background: var(--white); padding: 50px 48px; }
+    .quote-option h3 { font-size: 2rem; margin: 10px 0 12px; }
+    .quote-option p { color: var(--stone); margin-bottom: 28px; }
+    .partner-note { text-align: center; margin-top: 22px; font-size: 0.92rem; color: var(--stone); }
+    .partner-note a { color: var(--gold); border-bottom: 1px solid var(--gold-light); }
+    .btn-outline { background: transparent; color: var(--gold); }
+    .btn-outline:hover { background: var(--gold); color: var(--white); }
+    @media (max-width: 760px) { .quote-option { padding: 38px 26px; } }
+
     /* ---------- Footer ---------- */
     footer { background: var(--charcoal); color: rgba(239,232,220,0.6); padding: 70px 0 40px; }
     .footer-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; padding-bottom: 40px; border-bottom: 1px solid rgba(212,190,142,0.2); }
@@ -318,7 +328,7 @@
         <li><a href="#services">Services</a></li>
         <li><a href="#process">Process</a></li>
         <li><a href="#agents">For Agents</a></li>
-        <li><a href="#contact" class="btn btn-gold">Request a Quote</a></li>
+        <li><a href="quote.html" class="btn btn-gold">Request a Quote</a></li>
       </ul>
     </div>
   </nav>
@@ -331,7 +341,7 @@
         <h1>Every home deserves a <em>flawless</em> first impression.</h1>
         <p>White-glove cleaning for distinguished listings, seamless move-ins, and showings that sell. Discreet, meticulous, and always on schedule.</p>
         <div class="hero-actions">
-          <a href="#contact" class="btn btn-gold">Request a Quote</a>
+          <a href="quote.html" class="btn btn-gold">Request a Quote</a>
           <a href="#services" class="btn btn-ghost">Our Services</a>
         </div>
       </div>
@@ -450,7 +460,7 @@
         <div class="rule"></div>
         <p>Agents and brokers rely on Refresh to protect their reputation and their client relationships. We understand tight timelines, vacant-home access, and the standard a luxury listing demands.</p>
         <p>Ask about priority scheduling and recurring partner rates for your brokerage.</p>
-        <a href="#contact" class="btn btn-gold" style="margin-top: 18px;">Become a Partner</a>
+        <a href="quote.html?type=partner" class="btn btn-gold" style="margin-top: 18px;">Become a Partner</a>
       </div>
       <ul class="partner-list reveal">
         <li><strong>Agents &amp; Brokers</strong><span>Listing prep, open houses, and closing-ready cleans.</span></li>
@@ -493,9 +503,14 @@
         </div>
       </div>
 
-      <!-- GitHub Pages can't process forms on its own. Create a free form at formspree.io
-           and replace YOUR_FORM_ID below so submissions arrive in your inbox. -->
-      <form class="reveal" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <!-- Submissions are emailed via FormSubmit (formsubmit.co).
+           The first submission sends an activation email to this address — click the link in it once. -->
+      <div class="reveal">
+      <form action="https://formsubmit.co/jtzcathy@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New Quote Request — Refresh Cleaning">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
         <div class="form-row">
           <div class="field">
             <label for="name">Full Name</label>
@@ -514,8 +529,8 @@
           <div class="field">
             <label for="role">I am a</label>
             <select id="role" name="role">
-              <option>Real Estate Agent / Broker</option>
               <option>Homeowner</option>
+              <option>Real Estate Agent / Broker</option>
               <option>Builder</option>
               <option>Property Manager</option>
               <option>Other</option>
@@ -532,6 +547,7 @@
               <option>Move-In Ready</option>
               <option>Post-Construction</option>
               <option>Estate &amp; Rental Turnover</option>
+              <option>Partnership Inquiry</option>
             </select>
           </div>
           <div class="field">
@@ -545,6 +561,8 @@
         </div>
         <button type="submit" class="btn btn-gold">Send Request</button>
       </form>
+      <p class="partner-note">Agent, builder, or property manager? <a href="quote.html?type=partner">Become a partner →</a></p>
+      </div>
     </div>
   </section>
 
